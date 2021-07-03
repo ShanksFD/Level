@@ -1,0 +1,24 @@
+.nav-icon {
+   width: 20px;
+   /* Change svg color to black */
+   filter: invert(25%) sepia(1%) saturate(2635%) hue-rotate(354deg) brightness(98%) contrast(86%);
+ }
+ 
+ .navbar 
+ {
+   z-index: 99;
+ }
+ 
+ .nav-icon:focus,
+ .nav-icon:hover {
+  /* Change svg color to black */
+  filter: invert(69%) sepia(25%) saturate(559%) hue-rotate(167deg) brightness(91%) contrast(90%);
+  transition: .3s;
+}
+
+.right-snav .nav-link
+ {
+   padding-left: 1rem !important;
+ }
+
+
