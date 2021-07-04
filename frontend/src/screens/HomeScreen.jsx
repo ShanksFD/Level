@@ -6,8 +6,11 @@ import Hero from '../components/Hero'
 import ContainerCentered from '../components/ContainerCentered'
 
 function HomeScreen() {
+   const homeStyle = {
+      height: "100vh"
+   }
    return (
-      <Container>
+      <Container style={homeStyle}>
          <Hero />
          <ContainerCentered title="WE'RE ALL GAMERS"></ContainerCentered>
       </Container>
