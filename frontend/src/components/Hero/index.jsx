@@ -11,8 +11,8 @@ import krakenUltImg from '../../assets/img/kraken-ult.png'
 
 function Hero() {
    return (
-      <Container>
-         <Row className="flex-row hero">
+      <Container className="hero">
+         <Row className="flex-row">
             <Col className="my-auto mx-auto"  lg={6}>
                <Row>
                   <h1>Exclusive products & accessories</h1>
