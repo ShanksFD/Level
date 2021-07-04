@@ -4,17 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Local imports
 import Header from './components/Header'
 import Footer from './components/Footer';
-import Hero from './components/Hero';
 import HomeScreen from './screens/HomeScreen'
 
 function App() {
   return (
     <Router>
-      <div style={{height: "100vh"}}>
-        <Header />
-        <Hero />
-        
-      </div>
+      <Header />
       <Switch>
         <Route path='/' component={HomeScreen} exact/>
       </Switch>
