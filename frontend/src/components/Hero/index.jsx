@@ -14,7 +14,7 @@ function Hero() {
       <div className="hero">
          <Container className="hero-content">
             <Row className="flex-row">
-               <Col className="my-auto mx-auto"  lg={6}>
+               <Col className="my-auto mx-auto" lg={6}>
                   <Row>
                      <h1>Exclusive products & accessories</h1>
                   </Row>

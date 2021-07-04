@@ -11,6 +11,7 @@
   color: black;
   font-weight: 600;
 }
+
 .figure-caption p
 {
   position: absolute;
@@ -22,6 +23,7 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
 @media (max-width:768)
 {
   .figure-caption h2

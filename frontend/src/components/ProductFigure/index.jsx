@@ -1,7 +1,9 @@
-import React from 'react'
+// import React from 'react'
 import {Figure} from "react-bootstrap"
 
 // Local imports
+import './ProductFigure.css'
+
 function ProductFigure({children, image, alt}) {
    return (
       <>
