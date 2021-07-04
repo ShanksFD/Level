@@ -1,13 +1,15 @@
 import React from 'react'
 import {Figure} from "react-bootstrap"
 
-function ProductFigure({children, image}) {
+// Local imports
+function ProductFigure({children, image, alt}) {
    return (
       <>
          <Figure>
             <Figure.Image
-               alt="171x180"
+               alt={alt}
                src={image}
+               className="w-100"
             />
             <Figure.Caption>
                {children}
