@@ -1,4 +1,10 @@
-.hero button
+.hero
+{
+   height: 100vh;   
+}
+
+
+.hero-content button
 {
    width: 17rem;
    height: 4rem;
@@ -8,20 +14,15 @@
    font-weight:500;
 }
 
-.hero h1
+.hero-content h1
 {
    font-weight:700;
 }
 
 @media (max-width:576px)
 {
-   .hero h1
+   .hero-content h1
    {
       text-align: center;
    }
 }
-
-.hero {
-   height: 100% !important;
-   background-color: red;
- }

@@ -7,7 +7,10 @@ import './ContainerCentered.css'
 function ContainerCentered({children, title}) {
    return (
       <Container className="containerCentered">
-         <h1>{title}</h1>
+         <div className="title">
+            <h1>{title}</h1>
+         </div>
+         {children}
       </Container>
    )
 }

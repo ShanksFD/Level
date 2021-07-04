@@ -11,22 +11,25 @@ import krakenUltImg from '../../assets/img/kraken-ult.png'
 
 function Hero() {
    return (
-      <Container className="hero">
-         <Row className="flex-row">
-            <Col className="my-auto mx-auto"  lg={6}>
-               <Row>
-                  <h1>Exclusive products & accessories</h1>
-               </Row>
-               <Row className="d-sm-flex d-lg-block d-xl-block d-md-block justify-content-center">
-                  <Button variant="dark">SHOP NOW</Button>
-               </Row>
-            </Col>
+      <div className="hero">
+         <Container className="hero-content">
+            <Row className="flex-row">
+               <Col className="my-auto mx-auto"  lg={6}>
+                  <Row>
+                     <h1>Exclusive products & accessories</h1>
+                  </Row>
+                  {/* Center button in mobile view */}
+                  <Row className="d-sm-flex d-lg-block d-xl-block d-md-block justify-content-center">
+                     <Button variant="dark">SHOP NOW</Button>
+                  </Row>
+               </Col>
 
-            <Col className="mx-auto" lg={6}>
-               <Image src={krakenUltImg} fluid/>
-            </Col>
-         </Row>
-      </Container>
+               <Col className="mx-auto" lg={6}>
+                  <Image src={krakenUltImg} fluid/>
+               </Col>
+            </Row>
+         </Container>
+      </div>
    )
 }
 

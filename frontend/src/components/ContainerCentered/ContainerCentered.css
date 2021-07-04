@@ -1,6 +1,16 @@
 .containerCentered h1
 {
    text-align: center;
-   margin-bottom: 2rem;
+
+}
+
+.containerCentered .title
+{
+   height: 40px;
    background-color: blueviolet;
+}
+.containerCentered 
+{
+   height: 100vh;
+   background-color: burlywood;
 }
