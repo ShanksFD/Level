@@ -7,3 +7,16 @@
    font-size: 1.1rem;
    font-weight:500;
 }
+
+.hero h1
+{
+   font-weight:700;
+}
+
+@media only screen and (max-width: 576) 
+{
+   .hero h1
+   {
+      color: red;
+   }
+}

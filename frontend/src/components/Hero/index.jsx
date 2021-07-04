@@ -13,7 +13,7 @@ function Hero() {
    return (
       <Container>
          <Row className="flex-row hero">
-            <Col className="my-auto mx-auto "  lg={6}>
+            <Col className="my-auto mx-auto"  lg={6}>
                <Row>
                   <h1>Exclusive products & accessories</h1>
                </Row>
