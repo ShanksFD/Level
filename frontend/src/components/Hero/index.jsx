@@ -3,29 +3,24 @@ import {Image, Button, Row, Col, Container} from 'react-bootstrap'
 
 // Local imports
 import './Hero.css'
-import krakenUltImg from '../../assets/img/kraken-ult.png'
-// import twitterSvg from '../../assets/img/icons/twitter.svg'
-// import facebookSvg from '../../assets/img/icons/facebook.svg'
-// import githubSvg from '../../assets/img/icons/github.svg'
-// import instagramSvg from '../../assets/img/icons/instagram.svg'
 
-function Hero() {
+function Hero({title, image, buttonTitle, reverseOrder, bgColor}) {
    return (
-      <div className="hero">
+      <div className="hero" style={{backgroundColor: bgColor}}>
          <Container className="hero-content">
-            <Row className="flex-row">
-               <Col className="my-auto mx-auto" lg={6}>
+            <Row className={reverseOrder ? "flex-row-reverse" : "flex-row"}>
+               <Col className="my-auto mx-auto hero-title" lg={6}>
                   <Row>
-                     <h1>Exclusive products & accessories</h1>
+                     <h1>{title}</h1>
                   </Row>
                   {/* Center button in mobile view */}
-                  <Row className="d-sm-flex d-lg-block d-xl-block d-md-block justify-content-center">
-                     <Button variant="dark">SHOP NOW</Button>
+                  <Row className="d-sm-flex d-lg-block d-xl-block d-md-block justify-content-center mx-auto">
+                     <Button variant="dark">{buttonTitle}</Button>
                   </Row>
                </Col>
 
-               <Col className="mx-auto" lg={6}>
-                  <Image src={krakenUltImg} fluid/>
+               <Col className="hero-img-wrapper" lg={6}>
+                  <Image src={image} fluid/>
                </Col>
             </Row>
          </Container>
