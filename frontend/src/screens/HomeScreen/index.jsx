@@ -4,7 +4,9 @@ import React, {Fragment} from 'react'
 import "./HomeScreen.css"
 import Product from "../../components/Product"
 import Hero from '../../components/Hero'
-import { homeOne, homeTwo, HomeTwo } from '../../constants/heroData'
+import Newsletter from '../../components/Newsletter'
+import { homeOne, homeTwo } from '../../constants/heroData'
+
 // Images
 import productMamba from "../../assets/img/products/mamba.png"
 
@@ -26,6 +28,8 @@ function HomeScreen() {
          </div>
 
          <Hero {...homeTwo}/>
+
+         <Newsletter />
       </Fragment>
    )
 }            

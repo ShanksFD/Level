@@ -1,0 +1,46 @@
+.newsletter-content
+{
+   height: 100vh;  
+}
+
+.newsletter-wrapper
+{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.newsletter-wrapper h1
+{
+   text-align: center;
+   padding: .5rem 0;
+}
+
+.newsletter-wrapper h5
+{
+   text-align: center;
+   padding: .5rem 0;
+}
+.newsletter-wrapper img
+{
+   width: 70%;
+}
+
+.newsletter-wrapper form
+{
+   width: 60%;
+}
+
+@media (max-width:768px)
+{
+   .newsletter-wrapper form
+   {
+      width: 100%;
+   }
+   .newsletter-wrapper h5
+   {
+      font-size: .9rem;
+   }
+}
