@@ -11,8 +11,8 @@ function Product({img, alt, price, title}) {
       <div className="product">
          <div className="product-img-wrapper">
             <img src={img} alt={alt} className="w-100"/>
-            <i class={fav} aria-hidden="true" onClick={() => {
-               fav === "fa fa-heart-o" ? setFav("fa fa-heart") : setFav("fa fa-heart-o")
+            <i className={fav} aria-hidden="true" onClick={() => {
+                  fav === "fa fa-heart-o fff" ? setFav("fa fa-heart fff") : setFav("fa fa-heart-o fff")
             }}></i>
          </div>
          <div className="product-body">
