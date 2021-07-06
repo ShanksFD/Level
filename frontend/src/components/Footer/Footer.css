@@ -1,0 +1,95 @@
+.footer-wrapper ul
+{
+   list-style: none;
+   color: rgb(211, 211, 211);
+   text-transform: uppercase;
+   padding-top: 5rem;
+}
+
+.footer-wrapper a
+{
+   color: rgb(211, 211, 211);
+   transition: .1s ease-in;
+}
+
+.footer-wrapper a:hover
+{
+   color: #7DAAD3;
+}
+
+.footer-wrapper li
+{
+   padding: .4rem 0;
+}
+
+.footer-list-title
+{
+   font-size: 30px;
+   color: white;
+}
+
+.level
+{
+   font-size: 40px;
+   text-transform: lowercase;
+}
+
+footer
+{
+   background-color: black;
+}
+
+.hr {
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   border: none;
+   border-top: 1.5px solid rgb(90, 90, 90);
+ }
+
+ .footer-wrapper span
+ {
+   color: white;
+ }
+
+ .footer-mediaNav
+ {
+   padding: 2rem 0;
+   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(23deg) brightness(118%) contrast(118%)   
+ }
+
+ .footer-mediaNav .img-wrapper
+ {
+   width: 2.5rem;
+   transition: 200ms ease-in;
+ }
+
+ .footer-mediaNav .img-wrapper img
+ {
+   width: 100%;
+ }
+
+ .footer-mediaNav .img-wrapper:hover
+ {
+   filter: invert(15%) sepia(77%) saturate(7440%) hue-rotate(7deg) brightness(111%) contrast(126%);
+ }
+
+ .footer-mediaNav .col
+ {
+   flex-grow: 0;
+
+ }
+ 
+span
+{
+   display: block;
+   text-align: center;
+}
+
+ @media (max-width:768px)
+{
+   .footer-mediaNav
+   {
+      justify-content: center;
+   }
+   
+}

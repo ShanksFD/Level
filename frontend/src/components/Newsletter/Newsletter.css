@@ -31,6 +31,7 @@
 .newsletter-wrapper form
 {
    width: 60%;
+   padding-bottom: 6rem;
 }
 
 @media (max-width:768px)
