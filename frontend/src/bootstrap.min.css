@@ -2751,13 +2751,19 @@
  }
  .btn-primary {
     color: #fff;
-    background-color: #474747;
-    border-color: #474747;
+    /* background-color: #474747;
+    border-color: #474747; */
+    background-color: black;
+    border: 1px solid black;
+    transition: 350ms ease-in-out;
  }
  .btn-primary:hover {
-    color: #fff;
-    background-color: #161616;
-    border-color: #151515;
+    color: black;
+    /* background-color: #161616;
+    border-color: #151515; */
+    background-color: transparent;
+    border: 1px solid black;
+
  }
  .btn-check:focus + .btn-primary,
  .btn-primary:focus {

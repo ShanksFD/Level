@@ -1,0 +1,31 @@
+.cart
+{
+   min-height: 60vh;
+   padding-bottom: 5rem;
+}
+
+.cart-checkout
+{
+   background-color: #F8F8F8;
+   
+}
+
+.cart-checkout .list-group-item
+{
+   background-color: transparent;
+}
+
+.cart-productInfos
+{
+   padding-bottom: 5rem;
+}
+
+@media (max-width:768px)
+{
+   .cart-checkout h2
+   {
+      text-align: left;
+   }
+   
+}
+
