@@ -8,13 +8,12 @@ import Hero from '../../components/Hero'
 import Newsletter from '../../components/Newsletter'
 import { homeOne, homeTwo } from '../../constants/heroData'
 import {listProducts} from "../../actions/productActions"
-
-// Images
-import productMamba from "../../assets/img/products/mamba.png"
+import Message from "../../components/Message"
+import Loader from "../../components/Loader"
 
 function HomeScreen() {
 
-   const {products} = useSelector(state => state.productList)
+   const {error, loading, products} = useSelector(state => state.productList)
    const dispatch = useDispatch();
 
    useEffect(() => {
@@ -28,11 +27,13 @@ function HomeScreen() {
          <div className="container bestsellers-container">
             <h1>BESTSELLERS</h1>
             <div className="products-wrapper">
-               <Product title="Logitech Mamba" price="120" img={productMamba} alt="Logitech Mamba"/>
-               <Product title="Logitech Mamba" price="120" img={productMamba} alt="Logitech Mamba"/>
-               <Product title="Logitech Mamba" price="120" img={productMamba} alt="Logitech Mamba"/>
-               <Product title="Logitech Mamba" price="120" img={productMamba} alt="Logitech Mamba"/>
-               {console.log(products)}
+               {error ? <Message variant="danger">{error}</Message>
+               : loading ? <Loader /> 
+               :
+                  products.map(product => (
+                     <Product key={product._id} id={product._id} name={product.name} price={product.price} image={product.image} alt={product.name}/>
+               )) 
+               }
             </div>
          </div>
 

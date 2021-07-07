@@ -7,3 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+span
+{
+  display: inline !important;
+}

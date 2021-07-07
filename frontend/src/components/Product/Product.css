@@ -10,10 +10,11 @@
    text-transform: unset;
 }
 
-.product-price 
+.product-price  p
 {
    text-align: center;
    font-size: 1.3rem;
+
 }
 
 .product-btn
