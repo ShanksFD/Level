@@ -12,6 +12,7 @@ import {
    PRODUCT_DETAILS_SUCCESS,
 } from "../constants/productConstants";
 import axios from "axios";
+import {sortType} from "../constants/utilityConstants"
 
 export const listProducts = () => async (dispatch) => {
    try {
@@ -19,6 +20,44 @@ export const listProducts = () => async (dispatch) => {
 
       const { data } = await axios.get("/api/products/");
 
+      dispatch({
+         type: PRODUCT_LIST_SUCCESS,
+         payload: data,
+      });
+   } catch (error) {
+      dispatch({
+         type: PRODUCT_LIST_FAIL,
+         payload:
+            error.response && error.response.data.detail
+               ? error.response.data.detail
+               : error.message,
+      });
+   }
+};
+
+export const listProductCategory = (sort, category) => async (dispatch) => {
+   try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
+
+      var {data} = {}
+      switch(sort)
+      {
+         case sortType.FEATURED:
+            ({ data } = await axios.get(`/api/products/featuredProducts/${category}`))
+            break;
+         case sortType.NEWEST:
+            ({ data } = await axios.get(`/api/products/newestProducts/${category}`))
+            break;
+         case sortType.HTL:
+            ({ data } = await axios.get(`/api/products/highPriceProducts/${category}`))
+            break;
+         case sortType.LTH:
+            ({ data } = await axios.get(`/api/products/lowPriceProducts/${category}`))
+            break;
+         default:
+            ({ data } = await axios.get(`/api/products/featuredProducts/${category}`))
+      }
+      
       dispatch({
          type: PRODUCT_LIST_SUCCESS,
          payload: data,

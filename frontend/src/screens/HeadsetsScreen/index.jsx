@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router-dom'
 
 // Local imports
-import "./MiceScreen.css"
+// import "./MiceScreen.css"
 import { toggleNav } from "../../actions/navActions";
 import {listProductCategory, listFeaturedProduct} from "../../actions/productActions"
 import ProductHero from '../../components/ProductHero'
-import {mice} from "../../constants/heroData"
+import {headsets} from "../../constants/heroData"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
 import Product from "../../components/Product"
-import {CATEGORY_MICE, sortType} from "../../constants/utilityConstants"
+import {CATEGORY_HEADSETS, sortType} from "../../constants/utilityConstants"
 
-function MiceScreen({location}) {
+function HeadsetsScreen({location}) {
    const [sort, setSort] = useState(sortType.FEATURED)
    const {error, loading, products} = useSelector(state => state.productList)
    const featuredProduct = useSelector(state => state.featuredProduct)
@@ -28,14 +28,14 @@ function MiceScreen({location}) {
 
 
    useEffect(() => {
-      dispatch(listProductCategory(sort, CATEGORY_MICE))
-      dispatch(toggleNav(mice.bgColor))
-      dispatch(listFeaturedProduct(CATEGORY_MICE))
+      dispatch(listProductCategory(sort, CATEGORY_HEADSETS))
+      dispatch(toggleNav(headsets.bgColor))
+      dispatch(listFeaturedProduct(CATEGORY_HEADSETS))
 
       // FIXME: HARD CODED VALUE
       var historyListener = history.listen((location) => { 
-         if(location.pathname !== "/mice")
-            dispatch(toggleNav())
+         if(location.pathname !== "/headsets")
+            dispatch(toggleNav(headsets.bgColor))
             
          historyListener()
       }) 
@@ -44,8 +44,7 @@ function MiceScreen({location}) {
    return (
       <Fragment>
           <div className="mice">
-            
-               <ProductHero {...mice} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
+               <ProductHero {...headsets} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
                <Container>
                   <Row>
                      <NavDropdown title={`SORT: ${sort}`} id="mice-nav-dropdown">
@@ -73,4 +72,4 @@ function MiceScreen({location}) {
    )
 }
 
-export default MiceScreen
+export default HeadsetsScreen

@@ -1,5 +1,6 @@
-export const toggleNav = () => {
-   return {
-      type: "TOGGLE_NAV"
-   }
+export const toggleNav = (hexColor) => (dispatch) => {
+   dispatch({
+      type: "TOGGLE_NAV",
+      payload: hexColor,
+   });
 };

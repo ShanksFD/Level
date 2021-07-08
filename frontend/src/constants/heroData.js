@@ -27,3 +27,10 @@ export const mice = {
    image: krakenUltImg,
    bgColor: "#00B8FC",
 }
+
+export const headsets = {
+   title: "HEADSETS",
+   desc: "headsets",
+   image: krakenUltImg,
+   bgColor: "#00ead0",
+}

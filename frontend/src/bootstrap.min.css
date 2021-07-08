@@ -2751,17 +2751,15 @@
  }
  .btn-primary {
     /* //fff */
-    color: #fff;
-    background-color: #474747;
-    border-color: #474747;
-
+   color: #fff;
+   background-color: #474747;
+   border: 1px solid #474747;
+   transition: 300ms ease-in-out;
  }
  .btn-primary:hover {
-    color: black;
-    background-color: #161616;
-    border-color: #151515;
-
-
+   color: black;
+   background-color: transparent;
+   border: 2px solid #151515;
  }
  .btn-check:focus + .btn-primary,
  .btn-primary:focus {

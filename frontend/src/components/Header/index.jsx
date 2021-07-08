@@ -10,7 +10,6 @@ import searchOutlineSvg from '../../assets/img/icons/search-outline.svg'
 import heartOutlineSvg from '../../assets/img/icons/heart-outline.svg'
 import avatarOutlineSvg from '../../assets/img/icons/avatar-outline.svg'
 import cartOutlineSvg from '../../assets/img/icons/cart-outline.svg'
-import {miceData} from "../../constants/headerData"
 
 function Header() {
    const [mobileNav, setMobileNav] = useState(false);
@@ -36,7 +35,7 @@ function Header() {
    return (
       <div>
          <header>
-            <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: miceData.bgColor} : {backgroundColor: "#FFF" }}>
+            <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: navType.color} : {backgroundColor: "#FFF" }}>
                {navType && true}
                <Container>
                   <Navbar.Toggle aria-controls="basic-navbar-nav"/>

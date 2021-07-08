@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Local imports
-import {productListReducer, productDetailsReducer, featuredProductReducer} from "./reducers/productReducers";
+import {productListReducer, productDetailsReducer, featuredProductReducer, productListCategoryReducer} from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { navTypeReducer } from "./reducers/navReducers";
 
@@ -12,6 +12,7 @@ const reducer = combineReducers({
    productList: productListReducer,
    productDetails: productDetailsReducer,
    featuredProduct: featuredProductReducer,
+   productListCategory: productListCategoryReducer,
    cart: cartReducer,
    navType: navTypeReducer
 });

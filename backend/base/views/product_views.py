@@ -25,11 +25,41 @@ def getProduct(request, pk):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
+# FIXME: 
 @api_view(['GET'])
 def getFeaturedProduct(request, cte):
-    maxRating = Product.objects.filter(category=cte).aggregate(Max('rating'))
+    productList = Product.objects.filter(category=cte)
+    maxRating = productList.aggregate(Max('rating'))
 
     querySet = Product.objects.filter(rating=maxRating["rating__max"])
     product = querySet.first()
-    serializer = ProductSerializer(product, many=False)
+    serializer = ProductSerializer(productList.first(), many=False)
+    return Response(serializer.data)
+
+# Get products with highest rating
+@api_view(['GET'])
+def getFeaturedProducts(request, cte):
+    productList = Product.objects.filter(category=cte).order_by('rating').reverse()
+    serializer = ProductSerializer(productList, many=True)
+    return Response(serializer.data)
+
+# Get newest products
+@api_view(['GET'])
+def getNewestProducts(request, cte):
+    querySet = Product.objects.filter(category=cte).order_by('createdAt').reverse()
+    serializer = ProductSerializer(querySet, many=True)
+    return Response(serializer.data)
+
+# Get products ordered by high price
+@api_view(['GET'])
+def getHighPriceProducts(request, cte):
+    querySet = Product.objects.filter(category=cte).order_by('price').reverse()
+    serializer = ProductSerializer(querySet, many=True)
+    return Response(serializer.data)
+
+# Get products ordered by low price
+@api_view(['GET'])
+def getLowPriceProducts(request, cte):
+    querySet = Product.objects.filter(category=cte).order_by('price')
+    serializer = ProductSerializer(querySet, many=True)
     return Response(serializer.data)

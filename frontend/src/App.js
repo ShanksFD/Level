@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
 import MiceScreen from './screens/MiceScreen';
+import HeadsetsScreen from './screens/HeadsetsScreen';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/mice" component={MiceScreen} />
+        <Route path="/headsets" component={HeadsetsScreen} />
       </Switch>
       <Footer />
     </Router>
