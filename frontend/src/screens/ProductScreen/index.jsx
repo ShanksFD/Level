@@ -1,9 +1,8 @@
 
 import React, { useEffect, useState } from "react";
 import {Row, Col, Image, Form, Button, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from "react-router";
 
 import { listProductDetails } from "../../actions/productActions";
 import Loader from "../../components/Loader";
@@ -19,6 +18,8 @@ function ProductScreen({ match, history }) {
    const productDetails = useSelector((state) => state.productDetails);
    const { error, loading, product } = productDetails;
    const [fav, setFav] = useState("fa fa-heart-o")
+
+   const historyRouter = useHistory();
 
    const addToList = () => 
    {
@@ -57,9 +58,9 @@ function ProductScreen({ match, history }) {
          ) : (
             <div className="productSc-container">
                {!isMobile &&
-                  <Link to="/" className="btn btn-dark my-3">
+                  <Button className="btn-dark my-3" onClick={() => {historyRouter.goBack()}}>
                      Go back
-                  </Link>          
+                  </Button>          
                }
 
                <Row className="productSc-wrapper"> 

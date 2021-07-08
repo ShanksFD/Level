@@ -25,7 +25,6 @@ function Header() {
    }
 
    useEffect(() => {
-      console.log(navType)
       showMobileNav();
       
    }, [navType])
@@ -37,7 +36,7 @@ function Header() {
    return (
       <div>
          <header>
-            <Navbar expand="lg" className="navy" collapseOnSelect style={navType ? {backgroundColor: miceData.bgColor} : {backgroundColor: "#FFF" }}>
+            <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: miceData.bgColor} : {backgroundColor: "#FFF" }}>
                {navType && true}
                <Container>
                   <Navbar.Toggle aria-controls="basic-navbar-nav"/>

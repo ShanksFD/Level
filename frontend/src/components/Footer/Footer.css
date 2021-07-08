@@ -76,7 +76,6 @@ footer
  .footer-mediaNav .col
  {
    flex-grow: 0;
-
  }
  
 span
@@ -91,5 +90,4 @@ span
    {
       justify-content: center;
    }
-   
 }

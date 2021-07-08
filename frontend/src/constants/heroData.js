@@ -20,3 +20,10 @@ export const homeTwo = {
    bgColor: "#ccc",
    useH2: true
 }
+
+export const mice = {
+   title: "MICE",
+   desc: "mice",
+   image: krakenUltImg,
+   bgColor: "#00B8FC",
+}

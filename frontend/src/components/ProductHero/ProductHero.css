@@ -1,0 +1,33 @@
+.heroProduct-content h1
+{
+   font-weight:700;
+   font-size: 4rem;
+}
+
+.heroProduct-content h5
+{
+   font-size: 1.2rem;
+   text-transform: unset;
+}
+
+@media (max-width:768px)
+{
+   .heroProduct-content h1, h2
+   {
+      text-align: center;
+   }
+   .heroProduct-title .heroProduct-text 
+   {
+      justify-content: center;
+   }
+
+   .heroProduct-title .heroProduct-text h5
+   {
+      text-align: center;
+   }
+}
+
+.heroProduct-img-wrapper img
+{
+   max-width: 70%;
+}
