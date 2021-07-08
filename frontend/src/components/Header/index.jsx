@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Nav, Navbar, Container, Image, Form } from "react-bootstrap";
+import { Nav, Navbar, Container, Image, Form, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 // Local imports
@@ -56,10 +56,23 @@ function Header() {
 
                   <Navbar.Collapse id="basic-navbar-nav">
                      <Nav className="mx-auto">
-                        <LinkContainer to="/products">
-                           <Nav.Link>PRODUCTS</Nav.Link>
-                        </LinkContainer>
+                           <NavDropdown title="PRODUCTS" id="basic-nav-dropdown">
+                              <LinkContainer to="/mice">
+                                 <NavDropdown.Item>Mice</NavDropdown.Item>
+                              </LinkContainer>
 
+                              <LinkContainer to="/keyboards">
+                                 <NavDropdown.Item>Keyboards</NavDropdown.Item>
+                              </LinkContainer>
+
+                              <LinkContainer to="/headsets">
+                                 <NavDropdown.Item>Headsets</NavDropdown.Item>
+                              </LinkContainer>
+
+                              <LinkContainer to="/cameras">
+                                 <NavDropdown.Item>Cameras</NavDropdown.Item>
+                              </LinkContainer>
+                           </NavDropdown>
                         <LinkContainer to="/about-us">
                            <Nav.Link>ABOUTS US</Nav.Link>
                         </LinkContainer>

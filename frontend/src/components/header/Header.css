@@ -21,5 +21,7 @@
    padding-left: 1rem !important;
  }
 
-
-
+ #basic-navbar-nav > div > div
+{
+  margin-right: 0 !important;
+}
