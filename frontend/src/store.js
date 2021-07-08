@@ -5,12 +5,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 // Local imports
 import {productListReducer, productDetailsReducer} from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
+import { navTypeReducer } from "./reducers/navReducers";
 
 
 const reducer = combineReducers({
    productList: productListReducer,
    productDetails: productDetailsReducer,
    cart: cartReducer,
+   navType: navTypeReducer
 });
 
 const carItemsFromStorage = localStorage.getItem("cartItems")

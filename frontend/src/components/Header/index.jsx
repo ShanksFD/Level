@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Nav, Navbar, Container, Image, Form, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { useSelector} from "react-redux";
 
 // Local imports
 import './Header.css'
@@ -9,9 +10,12 @@ import searchOutlineSvg from '../../assets/img/icons/search-outline.svg'
 import heartOutlineSvg from '../../assets/img/icons/heart-outline.svg'
 import avatarOutlineSvg from '../../assets/img/icons/avatar-outline.svg'
 import cartOutlineSvg from '../../assets/img/icons/cart-outline.svg'
+import {miceData} from "../../constants/headerData"
 
 function Header() {
    const [mobileNav, setMobileNav] = useState(false);
+
+   const navType = useSelector(state => state.navType)
 
    const showMobileNav = () => {
       if(window.innerWidth < LG_SIZE)
@@ -21,8 +25,10 @@ function Header() {
    }
 
    useEffect(() => {
+      console.log(navType)
       showMobileNav();
-   }, [])
+      
+   }, [navType])
 
    // Add a listener to resize keyEvent 
    // Toggle showMobileNav when the window reachs Medium size or bellow
@@ -31,7 +37,8 @@ function Header() {
    return (
       <div>
          <header>
-            <Navbar expand="lg" collapseOnSelect>
+            <Navbar expand="lg" className="navy" collapseOnSelect style={navType ? {backgroundColor: miceData.bgColor} : {backgroundColor: "#FFF" }}>
+               {navType && true}
                <Container>
                   <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                   <LinkContainer to="/" >

@@ -11,6 +11,7 @@ import {listProducts} from "../../actions/productActions"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
 
+
 function HomeScreen() {
 
    const {error, loading, products} = useSelector(state => state.productList)
