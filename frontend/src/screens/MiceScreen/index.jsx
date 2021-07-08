@@ -6,12 +6,13 @@ import { useHistory } from 'react-router-dom'
 // Local imports
 import "./MiceScreen.css"
 import { toggleNav } from "../../actions/navActions";
+import {listProducts, listFeaturedProduct} from "../../actions/productActions"
 import ProductHero from '../../components/ProductHero'
 import {mice} from "../../constants/heroData"
-import {listProducts} from "../../actions/productActions"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
 import Product from "../../components/Product"
+import {MICE} from "../../constants/categoryConstants"
 
 function MiceScreen({location}) {
    const sortType = {
@@ -23,6 +24,7 @@ function MiceScreen({location}) {
 
    const [sort, setSort] = useState(sortType.FEATURED)
    const {error, loading, products} = useSelector(state => state.productList)
+   const featuredProduct = useSelector(state => state.featuredProduct)
 
    const history = useHistory()
    const dispatch = useDispatch()
@@ -35,6 +37,7 @@ function MiceScreen({location}) {
    useEffect(() => {
       dispatch(listProducts())
       dispatch(toggleNav())
+      dispatch(listFeaturedProduct(MICE))
 
       // FIXME: HARD CODED VALUE
       var historyListener = history.listen((location) => { 
@@ -49,7 +52,7 @@ function MiceScreen({location}) {
       <Fragment>
           <div className="mice">
             <div className="nav-show"></div>
-               <ProductHero {...mice} />
+               <ProductHero {...mice} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
                <Container>
                   <Row>
                      <NavDropdown title={`SORT: ${sort}`} id="mice-nav-dropdown">
