@@ -43,12 +43,12 @@ function MiceScreen({location}) {
 
    return (
       <Fragment>
-          <div className="mice">
+          <div className="pr">
             
                <ProductHero {...mice} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
                <Container>
                   <Row>
-                     <NavDropdown title={`SORT: ${sort}`} id="mice-nav-dropdown">
+                     <NavDropdown title={`SORT: ${sort}`} id="pr-nav-dropdown">
                         <NavDropdown.Item onClick={handleSortClick}>{sortType.FEATURED}</NavDropdown.Item> 
                         <NavDropdown.Item onClick={handleSortClick}>{sortType.NEWEST}</NavDropdown.Item> 
                         <NavDropdown.Item onClick={handleSortClick}>{sortType.LTH}</NavDropdown.Item> 
@@ -56,7 +56,7 @@ function MiceScreen({location}) {
                      </NavDropdown>
                   </Row>
                   <Row>
-                     <div className="mice-wrapper">
+                     <div className="pr-wrapper">
                         {error ? <Message variant="danger">{error}</Message>
                         : loading ? <Loader /> 
                         :

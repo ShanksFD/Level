@@ -9,6 +9,7 @@ import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
 import MiceScreen from './screens/MiceScreen';
 import HeadsetsScreen from './screens/HeadsetsScreen';
+import KeyboardScreen from './screens/KeyboardsScreen';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/mice" component={MiceScreen} />
         <Route path="/headsets" component={HeadsetsScreen} />
+        <Route path="/keyboards" component={KeyboardScreen} />
       </Switch>
       <Footer />
     </Router>

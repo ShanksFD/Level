@@ -25,7 +25,7 @@ def getProduct(request, pk):
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
-# FIXME: 
+#  Get product with highest rating
 @api_view(['GET'])
 def getFeaturedProduct(request, cte):
     productList = Product.objects.filter(category=cte)

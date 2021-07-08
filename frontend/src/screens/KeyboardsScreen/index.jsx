@@ -4,17 +4,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router-dom'
 
 // Local imports
-// import "./MiceScreen.css"
 import { toggleNav } from "../../actions/navActions";
 import {listProductCategory, listFeaturedProduct} from "../../actions/productActions"
 import ProductHero from '../../components/ProductHero'
-import {headsets} from "../../constants/heroData"
+import {keyboards} from "../../constants/heroData"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
 import Product from "../../components/Product"
-import {CATEGORY_HEADSETS, sortType} from "../../constants/utilityConstants"
+import {CATEGORY_KEYBOARD, sortType} from "../../constants/utilityConstants"
 
-function HeadsetsScreen({location}) {
+function KeyboardScreen({location}) {
    const [sort, setSort] = useState(sortType.FEATURED)
    const {error, loading, products} = useSelector(state => state.productList)
    const featuredProduct = useSelector(state => state.featuredProduct)
@@ -28,14 +27,14 @@ function HeadsetsScreen({location}) {
 
 
    useEffect(() => {
-      dispatch(listProductCategory(sort, CATEGORY_HEADSETS))
-      dispatch(toggleNav(headsets.bgColor))
-      dispatch(listFeaturedProduct(CATEGORY_HEADSETS))
+      dispatch(listProductCategory(sort, CATEGORY_KEYBOARD))
+      dispatch(toggleNav(keyboards.bgColor))
+      dispatch(listFeaturedProduct(CATEGORY_KEYBOARD))
 
       // FIXME: HARD CODED VALUE
       var historyListener = history.listen((location) => { 
-         if(location.pathname !== "/headsets")
-            dispatch(toggleNav(headsets.bgColor))
+         if(location.pathname !== "/keyboards")
+            dispatch(toggleNav())
             
          historyListener()
       }) 
@@ -44,7 +43,8 @@ function HeadsetsScreen({location}) {
    return (
       <Fragment>
           <div className="pr">
-               <ProductHero {...headsets} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
+            
+               <ProductHero {...keyboards} image={featuredProduct.product.image} desc={featuredProduct.product.name}/>
                <Container>
                   <Row>
                      <NavDropdown title={`SORT: ${sort}`} id="pr-nav-dropdown">
@@ -72,4 +72,4 @@ function HeadsetsScreen({location}) {
    )
 }
 
-export default HeadsetsScreen
+export default KeyboardScreen

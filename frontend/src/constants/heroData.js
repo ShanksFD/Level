@@ -24,13 +24,17 @@ export const homeTwo = {
 export const mice = {
    title: "MICE",
    desc: "mice",
-   image: krakenUltImg,
    bgColor: "#00B8FC",
 }
 
 export const headsets = {
    title: "HEADSETS",
    desc: "headsets",
-   image: krakenUltImg,
    bgColor: "#00ead0",
+}
+
+export const keyboards = {
+   title: "KEYBOARDS",
+   desc: "keyboards",
+   bgColor: "#B5EAEA",
 }
