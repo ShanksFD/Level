@@ -1,18 +1,10 @@
 import React from 'react'
 import {Image, Button, Row, Col, Container} from 'react-bootstrap'
-import { useHistory } from 'react-router'
 
 // Local imports
 import './Hero.css'
 
-function Hero({title, image, buttonTitle, reverseOrder, bgColor, useH2, desc}) {
-
-   const history = useHistory();
-
-   const handleClick = () => {
-      history.push("/headsets")
-   }
-
+function Hero({title, image, buttonTitle, reverseOrder, bgColor, useH2, desc, handleClick}) {
    return (
       <div className="hero" style={{backgroundColor: bgColor}}>
          <Container className="hero-content">

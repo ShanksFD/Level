@@ -12,6 +12,7 @@ import HeadsetsScreen from './screens/HeadsetsScreen';
 import KeyboardScreen from './screens/KeyboardsScreen';
 import AboutScreen from './screens/AboutScreen';
 import ContactScreen from './screens/ContactScreen';
+import WishlistScreen from './screens/WishlistScreen';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/keyboards" component={KeyboardScreen} />
         <Route path="/about-us" component={AboutScreen} />
         <Route path="/contact-us" component={ContactScreen} />
+        <Route path="/saved/:id?" component={WishlistScreen} />
       </Switch>
       <Footer />
     </Router>

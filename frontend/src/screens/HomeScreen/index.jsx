@@ -1,5 +1,6 @@
 import React, {Fragment, useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux"
+import { useHistory } from 'react-router'
 
 // Local imports
 import "./HomeScreen.css"
@@ -7,22 +8,36 @@ import Product from "../../components/Product"
 import Hero from '../../components/Hero'
 import Newsletter from '../../components/Newsletter'
 import { homeOne, homeTwo } from '../../constants/heroData'
-import {listProducts} from "../../actions/productActions"
+import {listBestsellersProduct} from "../../actions/productActions"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
 
 
 function HomeScreen() {
 
-   const {error, loading, products} = useSelector(state => state.productList)
+   const {error, loading, products} = useSelector(state => state.bestsellersProducts)
    const dispatch = useDispatch();
-
+   const BESTSELLERS_LIMIT = 4;
+   
    useEffect(() => {
-      dispatch(listProducts())
+      dispatch(listBestsellersProduct(BESTSELLERS_LIMIT))
    }, [dispatch])
+
+   const history = useHistory();
+
+   // FIXME:  HARD CODED VALUE
+   const shopNowHandler = () => {
+      history.push("/headsets")
+   }
+
+   const findNowHandler = () => {
+      history.push("/")
+   }
+
+
    return (
       <Fragment>
-         <Hero {...homeOne}/>
+            <Hero {...homeOne} handleClick={shopNowHandler}/>
 
          {/* Bestsellers Section */}
          <div className="container bestsellers-container">
@@ -38,7 +53,7 @@ function HomeScreen() {
             </div>
          </div>
 
-         <Hero {...homeTwo}/>
+         <Hero {...homeTwo} handleClick={findNowHandler}/>
 
          <Newsletter />
       </Fragment>

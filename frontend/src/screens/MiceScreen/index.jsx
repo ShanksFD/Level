@@ -14,9 +14,9 @@ import Loader from "../../components/Loader"
 import Product from "../../components/Product"
 import {CATEGORY_MICE, sortType} from "../../constants/utilityConstants"
 
-function MiceScreen({location}) {
+function MiceScreen() {
    const [sort, setSort] = useState(sortType.FEATURED)
-   const {error, loading, products} = useSelector(state => state.productList)
+   const {error, loading, products} = useSelector(state => state.productListCategory)
    const featuredProduct = useSelector(state => state.featuredProduct)
 
    const history = useHistory()
@@ -25,7 +25,6 @@ function MiceScreen({location}) {
    const handleSortClick = (e) => {
       setSort(e.target.innerHTML)
    }
-
 
    useEffect(() => {
       dispatch(listProductCategory(sort, CATEGORY_MICE))
@@ -60,9 +59,14 @@ function MiceScreen({location}) {
                         {error ? <Message variant="danger">{error}</Message>
                         : loading ? <Loader /> 
                         :
-                           products.map(product => (
-                              <Product key={product._id} id={product._id} name={product.name} price={product.price} image={product.image} alt={product.name}/>
-                        )) 
+                           products.map((product) => (
+                              <Product key={product._id} 
+                                          id={product._id} 
+                                          name={product.name} 
+                                          price={product.price} i
+                                          image={product.image} 
+                                          alt={product.name}/>
+                           ))
                         }
                      </div>
                   </Row>

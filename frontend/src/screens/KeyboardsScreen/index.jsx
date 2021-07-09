@@ -13,9 +13,9 @@ import Loader from "../../components/Loader"
 import Product from "../../components/Product"
 import {CATEGORY_KEYBOARD, sortType} from "../../constants/utilityConstants"
 
-function KeyboardScreen({location}) {
+function KeyboardScreen() {
    const [sort, setSort] = useState(sortType.FEATURED)
-   const {error, loading, products} = useSelector(state => state.productList)
+   const {error, loading, products} = useSelector(state => state.productListCategory)
    const featuredProduct = useSelector(state => state.featuredProduct)
 
    const history = useHistory()
@@ -59,9 +59,14 @@ function KeyboardScreen({location}) {
                         {error ? <Message variant="danger">{error}</Message>
                         : loading ? <Loader /> 
                         :
-                           products.map(product => (
-                              <Product key={product._id} id={product._id} name={product.name} price={product.price} image={product.image} alt={product.name}/>
-                        )) 
+                           products.map((product) => (
+                              <Product key={product._id} 
+                                          id={product._id} 
+                                          name={product.name} 
+                                          price={product.price} i
+                                          image={product.image} 
+                                          alt={product.name}/>
+                           ))
                         }
                      </div>
                   </Row>

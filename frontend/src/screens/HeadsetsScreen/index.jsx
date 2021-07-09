@@ -14,9 +14,9 @@ import Loader from "../../components/Loader"
 import Product from "../../components/Product"
 import {CATEGORY_HEADSETS, sortType} from "../../constants/utilityConstants"
 
-function HeadsetsScreen({location}) {
+function HeadsetsScreen() {
    const [sort, setSort] = useState(sortType.FEATURED)
-   const {error, loading, products} = useSelector(state => state.productList)
+   const {error, loading, products} = useSelector(state => state.productListCategory)
    const featuredProduct = useSelector(state => state.featuredProduct)
 
    const history = useHistory()

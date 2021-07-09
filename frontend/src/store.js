@@ -3,27 +3,36 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Local imports
-import {productListReducer, productDetailsReducer, featuredProductReducer, productListCategoryReducer} from "./reducers/productReducers";
+import {productDetailsReducer, featuredProductReducer, productListCategoryReducer, bestsellersProductsReducer} from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 import { navTypeReducer } from "./reducers/navReducers";
+import { savedReducer } from "./reducers/savedReducers";
 
 
 const reducer = combineReducers({
-   productList: productListReducer,
    productDetails: productDetailsReducer,
    featuredProduct: featuredProductReducer,
    productListCategory: productListCategoryReducer,
+   bestsellersProducts: bestsellersProductsReducer,
    cart: cartReducer,
+   saved: savedReducer,
    navType: navTypeReducer
 });
 
-const carItemsFromStorage = localStorage.getItem("cartItems")
+const cartItemsFromStorage = localStorage.getItem("cartItems")
    ? JSON.parse(localStorage.getItem("cartItems"))
    : [];
 
+const savedItemsFromStorage = localStorage.getItem("savedItems")
+? JSON.parse(localStorage.getItem("savedItems"))
+: [];
+
 const initialState = {
    cart: {
-      cartItems: carItemsFromStorage,
+      cartItems: cartItemsFromStorage,
+   },
+   saved: {
+      savedItems: savedItemsFromStorage
    }
 };
 

@@ -8,7 +8,9 @@ urlpatterns = [
     path('featuredProduct/<str:cte>', views.getFeaturedProduct, name=""),
     path('featuredProducts/<str:cte>', views.getFeaturedProducts, name=""),
 
+    # FIXME: REPEATED VIEWS
     path('newestProducts/<str:cte>', views.getNewestProducts, name=""),
     path('highPriceProducts/<str:cte>', views.getHighPriceProducts, name=""),
     path('lowPriceProducts/<str:cte>', views.getLowPriceProducts, name=""),
+    path('bestsellersProducts/<int:limit>', views.getBestsellersProducts, name=""),
 ]

@@ -1,11 +1,15 @@
 import {
-   PRODUCT_LIST_FAIL,
    PRODUCT_LIST_REQUEST,
    PRODUCT_LIST_SUCCESS,
+   PRODUCT_LIST_FAIL,
 
-   FEATURED_PRODUCT_LIST_FAIL,
-   FEATURED_PRODUCT_LIST_REQUEST,
-   FEATURED_PRODUCT_LIST_SUCCESS,
+   FEATURED_PRODUCT_FAIL,
+   FEATURED_PRODUCT_REQUEST,
+   FEATURED_PRODUCT_SUCCESS,
+
+   BESTSELLERS_PRODUCTS_LIST_FAIL,
+   BESTSELLERS_PRODUCTS_LIST_REQUEST,
+   BESTSELLERS_PRODUCTS_LIST_SUCCESS,
 
    PRODUCT_DETAILS_FAIL,
    PRODUCT_DETAILS_REQUEST,
@@ -13,27 +17,6 @@ import {
 } from "../constants/productConstants";
 import axios from "axios";
 import {sortType} from "../constants/utilityConstants"
-
-export const listProducts = () => async (dispatch) => {
-   try {
-      dispatch({ type: PRODUCT_LIST_REQUEST });
-
-      const { data } = await axios.get("/api/products/");
-
-      dispatch({
-         type: PRODUCT_LIST_SUCCESS,
-         payload: data,
-      });
-   } catch (error) {
-      dispatch({
-         type: PRODUCT_LIST_FAIL,
-         payload:
-            error.response && error.response.data.detail
-               ? error.response.data.detail
-               : error.message,
-      });
-   }
-};
 
 export const listProductCategory = (sort, category) => async (dispatch) => {
    try {
@@ -57,7 +40,6 @@ export const listProductCategory = (sort, category) => async (dispatch) => {
          default:
             ({ data } = await axios.get(`/api/products/featuredProducts/${category}`))
       }
-      
       dispatch({
          type: PRODUCT_LIST_SUCCESS,
          payload: data,
@@ -96,16 +78,36 @@ export const listProductDetails = (id) => async function (dispatch) {
 
    export const listFeaturedProduct = (category) => async (dispatch) => {
       try {
-         dispatch({ type: FEATURED_PRODUCT_LIST_REQUEST });
+         dispatch({ type: FEATURED_PRODUCT_REQUEST });
    
          const { data } = await axios.get(`/api/products/featuredProduct/${category}`);
             dispatch({
-            type: FEATURED_PRODUCT_LIST_SUCCESS,
+            type: FEATURED_PRODUCT_SUCCESS,
             payload: data,
          });
       } catch (error) {
          dispatch({
-            type: FEATURED_PRODUCT_LIST_FAIL,
+            type: FEATURED_PRODUCT_FAIL,
+            payload:
+               error.response && error.response.data.detail
+                  ? error.response.data.detail
+                  : error.message,
+         });
+      }
+   };
+
+   export const listBestsellersProduct = (limit) => async (dispatch) => {
+      try {
+         dispatch({ type: BESTSELLERS_PRODUCTS_LIST_REQUEST });
+         const { data } = await axios.get(`/api/products/bestsellersProducts/${limit}`);
+
+            dispatch({
+            type: BESTSELLERS_PRODUCTS_LIST_SUCCESS,
+            payload: data,
+         });
+      } catch (error) {
+         dispatch({
+            type: BESTSELLERS_PRODUCTS_LIST_FAIL,
             payload:
                error.response && error.response.data.detail
                   ? error.response.data.detail

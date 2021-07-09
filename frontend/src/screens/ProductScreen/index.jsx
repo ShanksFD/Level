@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 import { listProductDetails } from "../../actions/productActions";
+import { addToSaved, removeFromSaved } from "../../actions/savedActions";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import Rating from "../../components/Rating";
@@ -12,19 +13,42 @@ import "./ProductScreen.css"
 import { LG_SIZE } from "../../constants/sizeConstants";
 
 function ProductScreen({ match, history }) {
+   const HEART = {
+      on: "fa fa-heart",
+      off: "fa fa-heart-o"
+   }
    const [isMobile, setIsMobile] = useState(false);
    const [qty, setQty] = useState(1);
-   const dispatch = useDispatch();
-   const productDetails = useSelector((state) => state.productDetails);
-   const { error, loading, product } = productDetails;
-   const [fav, setFav] = useState("fa fa-heart-o")
 
+   
+   const { error, loading, product } = useSelector((state) => state.productDetails);
+   const {savedItems} = useSelector(state => state.saved)
+   
    const historyRouter = useHistory();
+   const dispatch = useDispatch();
+   
+   // Wishlist section
+   var isSaved = false;
+   const initIsSaved = () => {
+      for(var i = 0; i < savedItems.length; i++) {
+         if (savedItems[i].product === match.params.id) {
+            isSaved = true;
+            break;
+         }
+      }
+   }
+   initIsSaved();
+   
+   const [fav, setFav] = useState(isSaved ? HEART.on : HEART.off)
 
    const addToList = () => 
    {
-      fav === "fa fa-heart-o" ? setFav("fa fa-heart") : setFav("fa fa-heart-o")
-      console.log("Add to list")
+      dispatch(addToSaved(match.params.id))
+   }
+
+   const removeFromList = () => 
+   {
+      dispatch(removeFromSaved(match.params.id))
    }
 
    const addToCartHandler = () => {
@@ -124,7 +148,18 @@ function ProductScreen({ match, history }) {
                               </Col>
                         </Row>
                         <Row className="productCs-addto">
-                           <Col><i className={fav} onClick={addToList}></i></Col>
+                           <Col><i className={fav} onClick={() => {
+                                 if(fav === HEART.off)
+                                 {
+                                    addToList()
+                                    setFav(HEART.on)
+                                 }
+                                 else
+                                 {
+                                    removeFromList()
+                                    setFav(HEART.off)
+                                 }
+                           }}></i></Col>
                            <Col>ADD TO WISHLIST</Col>
                         </Row>
                   </Col>
