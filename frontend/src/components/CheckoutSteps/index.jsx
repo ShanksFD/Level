@@ -8,8 +8,8 @@ function CheckoutSteps({ step1, step2, step3, step4}) {
             Login
          </Breadcrumb.Item>
             
-         <Breadcrumb.Item href="/order" active={!step2}>
-            Order
+         <Breadcrumb.Item href="/cart" active={!step2}>
+            Cart
          </Breadcrumb.Item>
 
          <Breadcrumb.Item href="/payment" active={!step3}>

@@ -17,6 +17,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/headsets" component={HeadsetsScreen} />
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/keyboards" component={KeyboardScreen} />
+        <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/about-us" component={AboutScreen} />
         <Route path="/contact-us" component={ContactScreen} />
         <Route path="/saved/:id?" component={WishlistScreen} />
