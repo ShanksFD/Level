@@ -35,7 +35,7 @@ function Header() {
    return (
       <div>
          <header>
-            <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: navType.color} : {backgroundColor: "#FFF" }}>
+            <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: navType.color} : {backgroundColor: "transparent" }}>
                {navType && true}
                <Container>
                   <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -72,10 +72,6 @@ function Header() {
 
                               <LinkContainer to="/headsets">
                                  <NavDropdown.Item>Headsets</NavDropdown.Item>
-                              </LinkContainer>
-
-                              <LinkContainer to="/cameras">
-                                 <NavDropdown.Item>Cameras</NavDropdown.Item>
                               </LinkContainer>
                            </NavDropdown>
                         <LinkContainer to="/about-us">

@@ -1,0 +1,25 @@
+.profile
+{
+   width: 20rem;
+}
+.profile-name
+{
+   padding-top: 1rem;
+   text-align: center;
+   font-size: 1.4rem;
+   text-transform: unset;
+}
+
+.profile-job p
+{
+   text-align: center;
+   font-size: 1.3rem;
+   color: rgb(150, 150, 150);
+}
+
+.profile-img-wrapper
+{
+   background-color: #f8f8f8;
+   border-radius: 99rem;
+   padding: 2rem;
+}

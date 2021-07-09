@@ -10,6 +10,7 @@ import CartScreen from './screens/CartScreen'
 import MiceScreen from './screens/MiceScreen';
 import HeadsetsScreen from './screens/HeadsetsScreen';
 import KeyboardScreen from './screens/KeyboardsScreen';
+import AboutScreen from './screens/AboutScreen';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/mice" component={MiceScreen} />
         <Route path="/headsets" component={HeadsetsScreen} />
         <Route path="/keyboards" component={KeyboardScreen} />
+        <Route path="/about-us" component={AboutScreen} />
       </Switch>
       <Footer />
     </Router>
