@@ -5,10 +5,11 @@ import { Row, Col, ListGroup, Image, Button, Container } from "react-bootstrap";
 
 // Local imports
 import Message from "../../components/Message";
-import { addToSaved, removeFromSaved } from "../../actions/savedActions";
+import { addToSaved, removeFromSaved, updateSavedList } from "../../actions/savedActions";
+import { addToCart } from "../../actions/cartActions"
 import './WishlistScreen.css'
 
-function WishlistScreen({ match, location, history }) {
+function WishlistScreen({ match }) {
    const productId = match.params.id;
 
    const dispatch = useDispatch();
@@ -24,8 +25,15 @@ function WishlistScreen({ match, location, history }) {
       dispatch(removeFromSaved(id));
    };
 
-   const checkoutHandler = () => {
-      history.push("/login?redirect=shipping");
+   const checkoutHandler = (id) => {
+      // Add Item to cart
+      dispatch(addToCart(id, 1));
+
+      // Remove it from saved list
+      dispatch(removeFromSaved(id));
+
+      // Update list
+      dispatch(updateSavedList())
    };
 
    return (
@@ -57,7 +65,9 @@ function WishlistScreen({ match, location, history }) {
                               </Col>
                               <Col xs={2} md={2}>${item.price}</Col>
                               <Col xs={2} md={3} className="my-1">
-                                 <Button>ADD TO CARD</Button>
+                                 <Button onClick={() => {
+                                    checkoutHandler(item.product)
+                                 }}>ADD TO CARD</Button>
                               </Col>
                               <Col xs={1} md={1}>
                                  <Button

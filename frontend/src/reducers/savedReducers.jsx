@@ -1,7 +1,8 @@
 import {
    SAVED_ADD_ITEM,
    SAVED_REMOVE_ITEM,
-   SAVED_CLEAR_ITEMS
+   SAVED_CLEAR_ITEMS,
+   SAVED_UPDATE_ITEMS
 } from "../constants/savedConstants";
 
 export const savedReducer = (state = { savedItems: [] }, action) => {
@@ -32,6 +33,8 @@ export const savedReducer = (state = { savedItems: [] }, action) => {
                (x) => x.product !== action.payload
             ),
          };
+      case SAVED_UPDATE_ITEMS:
+         return { ...state, savedItems: state.savedItems}
       case SAVED_CLEAR_ITEMS:
          return { ...state, savedItems: []}
       default:

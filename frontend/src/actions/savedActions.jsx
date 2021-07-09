@@ -1,7 +1,8 @@
 import axios from "axios";
 import {
    SAVED_ADD_ITEM,
-   SAVED_REMOVE_ITEM
+   SAVED_REMOVE_ITEM,
+   SAVED_UPDATE_ITEMS
 } from "../constants/savedConstants";
 
 export const addToSaved = (id) => async (dispatch, getState) => {
@@ -26,4 +27,11 @@ export const removeFromSaved = (id) => (dispatch, getState) => {
       payload: id,
    });
    localStorage.setItem("savedItems", JSON.stringify(getState().saved.savedItems));
+};
+
+export const updateSavedList = () => (dispatch, getState) => {
+   dispatch({
+      type: SAVED_UPDATE_ITEMS,
+      payload: getState().saved.savedItems,
+   });
 };
