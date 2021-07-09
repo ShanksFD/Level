@@ -41,7 +41,7 @@ function ProductScreen({ match, history }) {
    useEffect(() => {
       dispatch(listProductDetails(match.params.id));
 
-      //toggleMobileScreen();
+      toggleMobileScreen();
    }, [dispatch, match.params.id]);
 
    // Add a listener to resize keyEvent 

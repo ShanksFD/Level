@@ -9,7 +9,6 @@ import Profile from '../../components/Profile'
 
 function AboutScreen() {
    return (
-      // background: url(images/bg.jpg) no-repeat center center fixed;
       <div className="about">
          <Image src={aboutBackground} fluid/>
          <Container>

@@ -11,6 +11,7 @@ import MiceScreen from './screens/MiceScreen';
 import HeadsetsScreen from './screens/HeadsetsScreen';
 import KeyboardScreen from './screens/KeyboardsScreen';
 import AboutScreen from './screens/AboutScreen';
+import ContactScreen from './screens/ContactScreen';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/headsets" component={HeadsetsScreen} />
         <Route path="/keyboards" component={KeyboardScreen} />
         <Route path="/about-us" component={AboutScreen} />
+        <Route path="/contact-us" component={ContactScreen} />
       </Switch>
       <Footer />
     </Router>

@@ -1,10 +1,18 @@
 import React from 'react'
 import {Image, Button, Row, Col, Container} from 'react-bootstrap'
+import { useHistory } from 'react-router'
 
 // Local imports
 import './Hero.css'
 
 function Hero({title, image, buttonTitle, reverseOrder, bgColor, useH2, desc}) {
+
+   const history = useHistory();
+
+   const handleClick = () => {
+      history.push("/headsets")
+   }
+
    return (
       <div className="hero" style={{backgroundColor: bgColor}}>
          <Container className="hero-content">
@@ -18,7 +26,7 @@ function Hero({title, image, buttonTitle, reverseOrder, bgColor, useH2, desc}) {
                   </Row>
                   {/* Center button in mobile view */}
                   <Row className="d-sm-flex d-lg-block d-xl-block d-md-block justify-content-center mx-auto">
-                     <Button variant="dark">{buttonTitle}</Button>
+                     <Button onClick={handleClick} variant="dark">{buttonTitle}</Button>
                   </Row>
                </Col>
 

@@ -78,8 +78,8 @@ function Header() {
                            <Nav.Link>ABOUTS US</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="/contacts">
-                           <Nav.Link>CONTACTS</Nav.Link>
+                        <LinkContainer to="/contact-us">
+                           <Nav.Link>CONTACT US</Nav.Link>
                         </LinkContainer>
 
                         {/* Show Profile and search button when the mobile menu is toggled */}
