@@ -11,6 +11,7 @@ import heartOutlineSvg from '../../assets/img/icons/heart-outline.svg'
 import avatarOutlineSvg from '../../assets/img/icons/avatar-outline.svg'
 import cartOutlineSvg from '../../assets/img/icons/cart-outline.svg'
 import {logout} from "../../actions/userActions"
+import {clearCartItems} from "../../actions/cartActions"
 
 function Header() {
    const [mobileNav, setMobileNav] = useState(false);
@@ -32,6 +33,7 @@ function Header() {
    const dispatch = useDispatch()
 
    const logoutHandler = () => {
+      dispatch(clearCartItems())
       dispatch(logout())
    }
 

@@ -1,35 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Form, Button, Container } from "react-bootstrap";
 
 // Local imports
 import Message from "../../components/Message";
-import { addToCart, removeFromCart } from "../../actions/cartActions";
+import { addToCart, removeFromCart, saveShippingAddress } from "../../actions/cartActions";
 import './CartScreen.css'
 
 function CartScreen({ match, location, history }) {
-   const productId = match.params.id;
-   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-
+   const SHIPPING = {
+      GROUND_SHIPPING: 0,
+      EXPEDITE: 50,
+      OVERNIGHT: 140
+   }
    const dispatch = useDispatch();
    const cart = useSelector((state) => state.cart);
    const { cartItems } = cart;
+   const {shippingAddress} = useSelector(state => state.cart)
 
+   const productId = match.params.id;
+   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+   const [shippingPrice, setShippingPrice] = useState(0)
+   const [address, setAddress] = useState(shippingAddress ? shippingAddress.address : "")
+   const [city, setCity] = useState(shippingAddress ? shippingAddress.city : "")
+   const [postalCode, setPostalCode] = useState(shippingAddress ? shippingAddress.postalCode : "")
+   const [country, setCountry] = useState(shippingAddress ? shippingAddress.country : "")
+
+ 
    useEffect(() => {
       if (productId) {
          dispatch(addToCart(productId, qty));
       }
    }, [dispatch, productId, qty]);
 
+   // Handlers
    const removeFromCartHandler = (id) => {
       dispatch(removeFromCart(id));
    };
 
    const checkoutHandler = () => {
-      history.push("/login?redirect=shipping");
+         history.push("/login?redirect=payment");
    };
 
+   const updateHandler = (e) => {
+      e.preventDefault()
+
+      dispatch(saveShippingAddress({address, city, postalCode, country}))
+   }
    return (
       <Container>
          <h1 className="text-center my-4">Your Shopping Cart</h1>
@@ -114,18 +132,21 @@ function CartScreen({ match, location, history }) {
                               name="formShippingRadios"
                               id="formship1"
                               defaultChecked
+                              onClick={() => setShippingPrice(SHIPPING.GROUND_SHIPPING)}
                            />
                            <Form.Check
                               type="radio"
                               label="Expedite - 2 to 3 days: $50"
                               name="formShippingRadios"
                               id="formship2"
+                              onClick={() => setShippingPrice(SHIPPING.EXPEDITE)}
                            />
                            <Form.Check
                               type="radio"
                               label="Overnight - Next Day: $140"
                               name="formShippingRadios"
                               id="formship3"
+                              onClick={() => setShippingPrice(SHIPPING.OVERNIGHT)}
                            />
                            </Col>
                         </Form.Group>
@@ -133,32 +154,53 @@ function CartScreen({ match, location, history }) {
                         {/* Address Section */}
                         <h2 className="my-4">Address</h2>
                         <Form.Group controlId="country" className="my-4">
-                           <Form.Control type="text" placeholder="Country" />
+                           <Form.Control 
+                           type="text" 
+                           placeholder="Country" 
+                           value={country ? country : ''} 
+                              onChange={(e) => {
+                                 setCountry(e.target.value);
+                              }}/>
                         </Form.Group>
 
                         <Form.Group controlId="address" className="my-4">
-                           <Form.Control type="text" placeholder="Address" />
+                           <Form.Control 
+                              type="text" 
+                              placeholder="Address"
+                              value={address ? address : ''} 
+                                 onChange={(e) => {
+                                    setAddress(e.target.value);
+                              }}/>
                         </Form.Group>
 
                         <Form.Group controlId="city" className="my-4">
-                           <Form.Control type="text" placeholder="City" />
+                           <Form.Control 
+                              type="text" 
+                              placeholder="City" 
+                              value={city ? city : ''} 
+                                    onChange={(e) => {
+                                       setCity(e.target.value);
+                              }}/>
                         </Form.Group>
 
                         <Form.Group controlId="postalCode" className="my-4">
-                           <Form.Control type="text" placeholder="Postal Code" />
+                           <Form.Control 
+                              type="text" 
+                              placeholder="Postal Code" 
+                              value={postalCode ? postalCode : ''} 
+                                    onChange={(e) => {
+                                       setPostalCode(e.target.value);
+                              }}/>
                         </Form.Group>
-                        <Button className="w-100">UPDATE</Button>
+                        <Button className="w-100" onClick={updateHandler}>UPDATE</Button>
 
                         {/* Total Section */}
                         <Row className="my-4">
                            <Col>
-                              Tax
+                              Shipping
                            </Col>
                            <Col>
-                              $
-                              {cartItems
-                              .reduce((acc, item) => acc + item.qty * item.price, 0)
-                              .toFixed()}
+                              ${shippingPrice}
                            </Col>
                         </Row>
                         
@@ -169,7 +211,7 @@ function CartScreen({ match, location, history }) {
                            <Col>
                               $
                               {cartItems
-                              .reduce((acc, item) => acc + item.qty * item.price, 0)
+                              .reduce((acc, item) => acc + item.qty * item.price, shippingPrice)
                               .toFixed()}
                            </Col>
                         </Row>
@@ -178,7 +220,7 @@ function CartScreen({ match, location, history }) {
                         <Button
                            type="button"
                            className="w-100"
-                           disabled={cartItems.length === 0}
+                           disabled={cartItems.length === 0 || (address === "" || city === "" || postalCode === "" || country === "")}
                            onClick={checkoutHandler}
                         >
                            PROCEED TO CHECKOUT
