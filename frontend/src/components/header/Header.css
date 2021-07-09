@@ -25,3 +25,16 @@
 {
   margin-right: 0 !important;
 }
+
+.top-header
+{
+  background-color: black;
+  height: 32px;
+  color: white;
+}
+
+.top-header .nav-link
+{
+  color: white;
+  font-size: .8rem;
+}

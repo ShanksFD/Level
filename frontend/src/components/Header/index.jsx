@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Nav, Navbar, Container, Image, Form, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Local imports
 import './Header.css'
@@ -10,12 +10,13 @@ import searchOutlineSvg from '../../assets/img/icons/search-outline.svg'
 import heartOutlineSvg from '../../assets/img/icons/heart-outline.svg'
 import avatarOutlineSvg from '../../assets/img/icons/avatar-outline.svg'
 import cartOutlineSvg from '../../assets/img/icons/cart-outline.svg'
+import {logout} from "../../actions/userActions"
 
 function Header() {
    const [mobileNav, setMobileNav] = useState(false);
 
    const navType = useSelector(state => state.navType)
-
+   const {userInfo} = useSelector(state => state.userLogin)
    const showMobileNav = () => {
       if(window.innerWidth < LG_SIZE)
          setMobileNav(true)
@@ -28,6 +29,12 @@ function Header() {
       
    }, [navType])
 
+   const dispatch = useDispatch()
+
+   const logoutHandler = () => {
+      dispatch(logout())
+   }
+
    // Add a listener to resize keyEvent 
    // Toggle showMobileNav when the window reachs Medium size or bellow
    window.addEventListener('resize', showMobileNav)
@@ -35,6 +42,19 @@ function Header() {
    return (
       <div>
          <header>
+            <div className="top-header">
+               <Nav className="d-flex container justify-content-end">
+                  {userInfo ?
+                  <>
+                     <LinkContainer to="/profile"><Nav.Link>MY ACCOUNT</Nav.Link></LinkContainer>.
+                     <LinkContainer to="/" onClick={logoutHandler}><Nav.Link>LOG OUT</Nav.Link></LinkContainer>
+                  </> :
+                  <>
+                     <LinkContainer to="/login"><Nav.Link>LOG IN</Nav.Link></LinkContainer>.
+                     <LinkContainer to="/register"><Nav.Link>CREATE ACCOUNT</Nav.Link></LinkContainer>
+                  </>}
+               </Nav>
+            </div>
             <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: navType.color} : {backgroundColor: "transparent" }}>
                {navType && true}
                <Container>
