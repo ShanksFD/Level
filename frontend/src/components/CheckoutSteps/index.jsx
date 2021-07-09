@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb } from 'react-bootstrap'
 
-function CheckoutSteps({ step1, step2, step3}) {
+function CheckoutSteps({ step1, step2, step3, step4}) {
    return (
       <Breadcrumb className="d-flex justify-content-center mb-4">
          <Breadcrumb.Item href="/login" active={!step1}>
@@ -16,7 +16,7 @@ function CheckoutSteps({ step1, step2, step3}) {
             Payment
          </Breadcrumb.Item>
 
-         <Breadcrumb.Item href="/place-order" active={!step3}>
+         <Breadcrumb.Item href="/place-order" active={!step4}>
             Place Order
          </Breadcrumb.Item>
       </Breadcrumb>
