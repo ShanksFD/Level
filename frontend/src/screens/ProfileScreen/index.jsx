@@ -75,7 +75,8 @@ function ProfileScreen({history}) {
                <hr/>
                <Col lg={8}>
                   <h5>Order History</h5>
-                  {loadingOrders ?
+                  {(
+                     loadingOrders ?
                      <Loader/> :
                      errorOrders ?
                      <Message variant="danger">{errorOrders}</Message> :
@@ -108,8 +109,8 @@ function ProfileScreen({history}) {
                               ))}
                            </tbody>
                         </Table>
-
-                     )}
+                     )
+                  )}
                </Col>
                <Col lg={4}>
                   <h5>Account Details</h5>

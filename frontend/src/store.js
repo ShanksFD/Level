@@ -7,7 +7,7 @@ import {productDetailsReducer, featuredProductReducer, productListCategoryReduce
 import { cartReducer } from "./reducers/cartReducers";
 import { navTypeReducer } from "./reducers/navReducers";
 import { savedReducer } from "./reducers/savedReducers";
-import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateReducer, userListReducer, userDeleteReducer } from "./reducers/userReducers";
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderDeliverReducer, orderListReducer} from "./reducers/orderReducers";
 
 const reducer = combineReducers({
@@ -15,18 +15,25 @@ const reducer = combineReducers({
    featuredProduct: featuredProductReducer,
    productListCategory: productListCategoryReducer,
    bestsellersProducts: bestsellersProductsReducer,
+   
    cart: cartReducer,
+
    saved: savedReducer,
+
    navType: navTypeReducer,
+
    userLogin: userLoginReducer,
    userRegister: userRegisterReducer,
    userDetails: userDetailsReducer,
    userUpdateProfile: userUpdateReducer,
+   userList: userListReducer,
+   userDelete: userDeleteReducer,
+
    orderCreate: orderCreateReducer,
    orderDetails: orderDetailsReducer,
    orderPay: orderPayReducer,
    orderDeliver: orderDeliverReducer,
-   orderListMy: orderListReducer
+   orderListMy: orderListReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
