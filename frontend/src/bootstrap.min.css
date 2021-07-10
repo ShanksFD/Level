@@ -2753,7 +2753,7 @@
     /* //fff */
    color: #fff;
    background-color: #474747;
-   border: 1px solid #474747;
+   border: 2px solid #474747;
    transition: 300ms ease-in-out;
  }
  .btn-primary:hover {

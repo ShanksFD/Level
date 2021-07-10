@@ -18,6 +18,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about-us" component={AboutScreen} />
         <Route path="/contact-us" component={ContactScreen} />
         <Route path="/saved/:id?" component={WishlistScreen} />
+        <Route path='/order/:id' component={OrderScreen} />
       </Switch>
       <Footer />
     </Router>
