@@ -10,7 +10,7 @@ import { getUserDetails, updateUserProfile } from "../../actions/userActions";
 import { USER_UPDATE_PROFILE_RESET } from '../../constants/userConstants'
 import "./ProfileScreen.css"
 import { listMyOrders } from '../../actions/orderActions'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function ProfileScreen({history}) {
    const [email, setEmail] = useState("");
@@ -93,7 +93,7 @@ function ProfileScreen({history}) {
                            </thead>
                            <tbody>
                               {orders.map(order => (
-                                 <tr>
+                                 <tr key={order._id}>
                                     <td>{order._id}</td>
                                     <td>{order.createdAt.substring(0, 10)}</td>
                                     <td>${order.totalPrice}</td>

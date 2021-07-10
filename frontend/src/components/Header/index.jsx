@@ -60,7 +60,10 @@ function Header() {
             <Navbar expand="lg" collapseOnSelect style={navType ? {backgroundColor: navType.color} : {backgroundColor: "transparent" }}>
                {navType && true}
                <Container>
-                  <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav"> 
+                     <i className="fa fa-bars" style={{fontSize: "1.5rem", color: "black"}}></i>
+                  </Navbar.Toggle>
+                  
                   <LinkContainer to="/" >
                      <Navbar.Brand>Level.</Navbar.Brand>
                   </LinkContainer>
