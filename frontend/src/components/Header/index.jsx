@@ -15,7 +15,7 @@ import {clearCartItems} from "../../actions/cartActions"
 
 function Header() {
    const [mobileNav, setMobileNav] = useState(false);
-
+   const [search, setSearch] = useState(false)
    const navType = useSelector(state => state.navType)
    const {userInfo} = useSelector(state => state.userLogin)
    const showMobileNav = () => {
@@ -42,7 +42,7 @@ function Header() {
    window.addEventListener('resize', showMobileNav)
    
    return (
-      <div>
+      <>
          <header>
             <div className="top-header">
                <Nav className="d-flex container justify-content-end">
@@ -129,9 +129,11 @@ function Header() {
 
                   {/* Hide nav elements in xs sm md screens */}
                   <Nav className="px-4 d-none d-sm-none d-md-none d-lg-flex d-lg-flex">
-                     <LinkContainer to="/search">
-                        <Nav.Link><Image src={searchOutlineSvg} alt="search-outline" className="nav-icon" /></Nav.Link>
-                     </LinkContainer>
+                     <Nav.Link onClick={() => {
+                        setSearch(!search)
+                     }}>
+                        <Image src={searchOutlineSvg} alt="search-outline" className="nav-icon" />
+                     </Nav.Link>
 
                      <LinkContainer to="/saved">
                         <Nav.Link><Image src={heartOutlineSvg} alt="heart-outline" className="nav-icon" /></Nav.Link>
@@ -145,10 +147,21 @@ function Header() {
                         <Nav.Link><Image src={cartOutlineSvg} alt="cart-outline" className="nav-icon" /></Nav.Link>
                      </LinkContainer>
                   </Nav>
+                  <div id="myOverlay" className="overlay" style={{display: search ? "block" : "none"}} onClick={(e) => {
+                     if(e.target.id === "myOverlay")
+                        setSearch(!search)
+                  }}>
+                     <div className="overlay-content">
+                        <form action="action_page.php">
+                           <input type="text" placeholder="SEARCH" name="search"/>
+                           <button type="submit"><i className="fa fa-search"></i></button>
+                        </form>
+                     </div>
+                  </div>
                </Container>
             </Navbar>
          </header>
-      </div>
+      </>
    );
 }
 
