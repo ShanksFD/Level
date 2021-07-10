@@ -54,7 +54,7 @@ function UserListScreen({ history }) {
                                     <th>NAME</th>
                                     <th>EMAIL</th>
                                     <th>ADMIN</th>
-                                    <th></th>
+                                    <th  style={{width: "150px"}}>ACTION</th>
                                 </tr>
                             </thead>
 
@@ -67,10 +67,10 @@ function UserListScreen({ history }) {
                                         <td>{user.isAdmin ? (
                                             <i className='fa fa-check' style={{ color: 'green' }}></i>
                                         ) : (
-                                                <i className='fa fa-check' style={{ color: 'red' }}></i>
+                                                <i className='fa fa-times' style={{ color: 'red' }}></i>
                                             )}</td>
 
-                                        <td>
+                                        <td className="d-flex justify-content-evenly">
                                             <LinkContainer to={`/admin/user/${user._id}/edit`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     <i className='fa fa-edit'></i>

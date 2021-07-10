@@ -48,6 +48,9 @@ function Header() {
                <Nav className="d-flex container justify-content-end">
                   {userInfo ?
                   <>
+                     {userInfo.isAdmin &&
+                        <LinkContainer to="/userList"><Nav.Link>USERS</Nav.Link></LinkContainer>
+                     } 
                      <LinkContainer to="/profile"><Nav.Link>MY ACCOUNT</Nav.Link></LinkContainer>.
                      <LinkContainer to="/" onClick={logoutHandler}><Nav.Link>LOG OUT</Nav.Link></LinkContainer>
                   </> :
